@@ -74,62 +74,77 @@
         
         .meter-fill {
             height: 100%;
-            transition: width 0.5s;
+            transition: width 0.3s ease;
+            border-radius: 6px;
         }
         
         .product-queue {
             padding: 20px;
             background: rgba(255,255,255,0.15);
             border-radius: 15px;
-            border: 3px solid #fbbf24;
+            border: 3px solid #f59e0b;
         }
         
         .queue-header {
             font-size: 18px;
             font-weight: bold;
             margin-bottom: 15px;
-        }
-        
-        .product-item {
-            padding: 15px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 10px;
-            border: 2px solid #fbbf24;
-            margin-bottom: 10px;
-            cursor: grab;
-            transition: all 0.3s;
             text-align: center;
         }
         
-        .product-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        .product-card {
+            background: white;
+            color: #1f2937;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            cursor: grab;
+            transition: all 0.3s ease;
+            border: 3px solid #f59e0b;
         }
         
-        .product-item.dragging {
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .product-card.dragging {
             opacity: 0.5;
             cursor: grabbing;
         }
         
-        .product-icon {
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-        
-        .product-name {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .product-material {
-            font-size: 12px;
-            opacity: 0.8;
-        }
+        .product-icon { font-size: 48px; margin-bottom: 10px; }
+        .product-name { font-size: 20px; font-weight: bold; margin-bottom: 5px; }
+        .product-material { font-size: 14px; color: #6b7280; }
         
         .main-area {
             display: flex;
             flex-direction: column;
             gap: 20px;
+        }
+        
+        .feedback-banner {
+            padding: 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 15px;
+            border: 3px solid;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .feedback-banner.show {
+            opacity: 1;
+        }
+        
+        .feedback-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .feedback-desc {
+            font-size: 16px;
+            opacity: 0.9;
         }
         
         .pathways-container {
@@ -139,12 +154,12 @@
         }
         
         .pathway {
-            padding: 30px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            border: 4px dashed;
+            padding: 20px;
+            background: rgba(255,255,255,0.15);
+            border-radius: 15px;
+            border: 3px solid;
             min-height: 400px;
-            transition: all 0.3s;
+            transition: all 0.3s ease;
         }
         
         .pathway.drag-over {
@@ -155,23 +170,13 @@
         .pathway-header {
             text-align: center;
             margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
         }
         
-        .pathway-icon {
-            font-size: 64px;
-            margin-bottom: 10px;
-        }
-        
-        .pathway-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        
-        .pathway-desc {
-            font-size: 14px;
-            opacity: 0.8;
-        }
+        .pathway-icon { font-size: 48px; margin-bottom: 10px; }
+        .pathway-title { font-size: 24px; font-weight: bold; margin-bottom: 5px; }
+        .pathway-desc { font-size: 14px; opacity: 0.8; }
         
         .pathway-content {
             display: flex;
@@ -179,234 +184,163 @@
             gap: 15px;
         }
         
-        .dropped-product {
-            padding: 15px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 10px;
-            border: 2px solid;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            animation: dropIn 0.5s ease-out;
+        .circular-actions {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px solid rgba(255,255,255,0.3);
         }
         
-        .circular-options {
+        .actions-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .action-buttons {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
-            margin-top: 15px;
         }
         
-        .circular-btn {
+        .action-btn {
             padding: 12px;
-            background: rgba(74, 222, 128, 0.3);
-            border: 2px solid #4ade80;
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
             border-radius: 8px;
-            color: #fff;
+            color: white;
+            cursor: pointer;
             font-size: 14px;
             font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
+            transition: all 0.2s ease;
         }
         
-        .circular-btn:hover {
-            background: rgba(74, 222, 128, 0.5);
-            transform: scale(1.05);
+        .action-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
         }
         
-        .circular-btn.selected {
+        .action-btn.selected {
             background: #4ade80;
-            color: #000;
+            border-color: #4ade80;
+            color: #1f2937;
         }
         
-        .circular-btn-icon {
-            font-size: 24px;
-            display: block;
-            margin-bottom: 5px;
+        .action-points {
+            font-size: 12px;
+            opacity: 0.8;
+            margin-top: 4px;
         }
         
-        .action-btns {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        
-        .btn {
-            padding: 15px 30px;
+        .submit-btn {
+            margin-top: 15px;
+            padding: 15px;
+            background: #4ade80;
             border: none;
             border-radius: 10px;
-            font-size: 16px;
+            color: #1f2937;
+            font-size: 18px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: all 0.2s ease;
         }
         
-        .btn-primary {
-            background: #4ade80;
-            color: #000;
-        }
-        
-        .btn-primary:hover {
+        .submit-btn:hover {
             background: #22c55e;
-            transform: scale(1.05);
+            transform: translateY(-2px);
         }
         
-        .btn-secondary {
-            background: rgba(255,255,255,0.2);
-            color: #fff;
+        .submit-btn:disabled {
+            background: #6b7280;
+            cursor: not-allowed;
+            transform: none;
         }
         
-        .btn-secondary:hover {
-            background: rgba(255,255,255,0.3);
-        }
-        
-        .feedback-banner {
-            padding: 20px;
-            background: rgba(255,255,255,0.2);
-            border-radius: 15px;
-            border: 3px solid;
-            text-align: center;
-            display: none;
-            animation: slideDown 0.5s ease-out;
-        }
-        
-        .feedback-banner.show {
-            display: block;
-        }
-        
-        .feedback-banner.correct {
-            border-color: #4ade80;
-            background: rgba(74, 222, 128, 0.2);
-        }
-        
-        .feedback-banner.incorrect {
-            border-color: #ef4444;
-            background: rgba(239, 68, 68, 0.2);
-        }
-        
-        .feedback-title {
-            font-size: 24px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .feedback-desc {
-            font-size: 16px;
-            opacity: 0.9;
-        }
-        
-        .modal {
+        .gameover-modal {
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.9);
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
             z-index: 1000;
         }
         
+        .gameover-modal.hidden {
+            display: none;
+        }
+        
         .modal-content {
-            padding: 40px;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 40px;
             border-radius: 20px;
-            border: 4px solid #4ade80;
-            max-width: 600px;
             text-align: center;
+            max-width: 600px;
+            border: 4px solid white;
         }
         
         .modal-title {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .final-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .final-stat {
+            padding: 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 12px;
+        }
+        
+        .final-stat-value {
             font-size: 36px;
-            margin-bottom: 20px;
+            font-weight: bold;
+            margin-bottom: 8px;
         }
         
-        .modal-stats {
-            background: rgba(255,255,255,0.1);
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .modal-stat-row {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-        
-        .education-section {
-            padding: 30px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 15px;
-            border: 2px solid #4ade80;
-            margin-top: 30px;
-        }
-        
-        .education-section h3 {
-            color: #4ade80;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-        
-        .education-section h4 {
-            margin: 20px 0 10px 0;
-            font-size: 18px;
-        }
-        
-        .education-section p {
-            line-height: 1.7;
+        .final-stat-label {
+            font-size: 14px;
             opacity: 0.9;
-            margin-bottom: 15px;
         }
         
-        .hidden { display: none; }
-        
-        .instructions-panel {
-            padding: 30px;
-            background: rgba(255,255,255,0.15);
-            border-radius: 15px;
-            border: 3px solid #4ade80;
-            margin-bottom: 30px;
-            animation: slideDown 0.5s ease-out;
-        }
-        
-        .instruction-card {
+        .final-message {
+            font-size: 20px;
+            margin: 30px 0;
             padding: 20px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.2);
+            border-radius: 12px;
+        }
+        
+        .restart-btn {
+            padding: 15px 40px;
+            background: #4ade80;
+            border: none;
             border-radius: 10px;
-            border: 2px solid rgba(255,255,255,0.3);
+            color: #1f2937;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
         
-        @keyframes dropIn {
-            from {
-                transform: translateY(-50px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-        
-        @keyframes slideDown {
-            from {
-                transform: translateY(-20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+        .restart-btn:hover {
+            background: #22c55e;
+            transform: translateY(-2px);
         }
 
         @media (max-width: 1024px) {
             .game-area {
                 grid-template-columns: 1fr;
             }
+            
             .pathways-container {
                 grid-template-columns: 1fr;
             }
@@ -417,84 +351,12 @@
     <div class="container">
         <div class="header">
             <h1>♻️ Circular Economy Challenge</h1>
-            <p>Design product lifecycles that eliminate waste!</p>
-            <button class="btn btn-secondary" onclick="toggleInstructions()" style="margin-top: 15px;">
-                📖 How to Play
-            </button>
-        </div>
-
-        <!-- Instructions Panel -->
-        <div class="instructions-panel" id="instructions-panel">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-                <h2 style="margin: 0;">📖 How to Play</h2>
-                <button class="btn btn-secondary" onclick="toggleInstructions()" style="padding: 8px 16px;">
-                    Close ✕
-                </button>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
-                <div class="instruction-card">
-                    <div style="font-size: 48px; text-align: center; margin-bottom: 10px;">1️⃣</div>
-                    <h3 style="text-align: center; margin-bottom: 10px;">See the Product</h3>
-                    <p style="text-align: center; opacity: 0.9;">
-                        A product appears in the left sidebar showing its name, icon, and materials.
-                    </p>
-                </div>
-
-                <div class="instruction-card">
-                    <div style="font-size: 48px; text-align: center; margin-bottom: 10px;">2️⃣</div>
-                    <h3 style="text-align: center; margin-bottom: 10px;">Drag & Drop</h3>
-                    <p style="text-align: center; opacity: 0.9;">
-                        <strong>Click and hold</strong> the product, then drag it to:<br>
-                        📉 <span style="color: #ef4444;">Linear</span> (landfill) or ♻️ <span style="color: #4ade80;">Circular</span> (keep in use)
-                    </p>
-                </div>
-
-                <div class="instruction-card">
-                    <div style="font-size: 48px; text-align: center; margin-bottom: 10px;">3️⃣</div>
-                    <h3 style="text-align: center; margin-bottom: 10px;">Choose Actions</h3>
-                    <p style="text-align: center; opacity: 0.9;">
-                        If you chose <strong>Circular</strong>, select how to keep it in use: repair, reuse, recycle, etc.
-                    </p>
-                </div>
-
-                <div class="instruction-card">
-                    <div style="font-size: 48px; text-align: center; margin-bottom: 10px;">4️⃣</div>
-                    <h3 style="text-align: center; margin-bottom: 10px;">Submit & Score</h3>
-                    <p style="text-align: center; opacity: 0.9;">
-                        Click <strong>Submit</strong> to see your score and feedback. Complete 10 products to finish!
-                    </p>
-                </div>
-            </div>
-
-            <div style="margin-top: 30px; padding: 20px; background: rgba(74, 222, 128, 0.2); border-radius: 10px; border-left: 4px solid #4ade80;">
-                <h3 style="margin-bottom: 15px;">💡 Scoring Guide</h3>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-                    <div><strong>🔧 Repair:</strong> +30 pts</div>
-                    <div><strong>✨ Refurbish:</strong> +28 pts</div>
-                    <div><strong>🔄 Reuse:</strong> +25 pts</div>
-                    <div><strong>🎨 Upcycle:</strong> +25 pts</div>
-                    <div><strong>🎁 Donate:</strong> +22 pts</div>
-                    <div><strong>🌱 Compost:</strong> +20 pts</div>
-                    <div><strong>♻️ Recycle:</strong> +15 pts</div>
-                    <div style="color: #ef4444;"><strong>🗑️ Landfill:</strong> -10 pts</div>
-                </div>
-                <p style="margin-top: 15px; opacity: 0.9; font-size: 14px;">
-                    <strong>💡 Pro Tip:</strong> You can select multiple actions for one product to earn more points! 
-                    Always choose Circular - repair is better than recycle, and anything is better than landfill!
-                </p>
-            </div>
-
-            <div style="text-align: center; margin-top: 20px;">
-                <button class="btn btn-primary" onclick="toggleInstructions()">
-                    Let's Play! 🎮
-                </button>
-            </div>
+            <p>Sort products into the right pathway and learn how to eliminate waste!</p>
         </div>
 
         <div class="game-area">
             <div class="sidebar">
-                <div class="stat-card" style="border-color: #4ade80;">
+                <div class="stat-card" style="border-color: #3b82f6;">
                     <div class="stat-header">
                         <div class="stat-icon">🎯</div>
                         <div class="stat-info">
@@ -502,7 +364,7 @@
                             <div class="stat-value" id="score-value">0</div>
                         </div>
                     </div>
-                    <div class="stat-detail">Round <span id="round-num">1</span>/10</div>
+                    <div class="stat-detail">Round <span id="round-count">1</span>/10</div>
                 </div>
 
                 <div class="stat-card" style="border-color: #22c55e;">
@@ -510,7 +372,7 @@
                         <div class="stat-icon">♻️</div>
                         <div class="stat-info">
                             <h3>Circularity</h3>
-                            <div class="stat-value" id="circular-value">0%</div>
+                            <div class="stat-value" id="circularity-value">0%</div>
                         </div>
                     </div>
                     <div class="meter">
@@ -561,331 +423,284 @@
                         <div class="pathway-content" id="circular-content"></div>
                     </div>
                 </div>
-
-                <div id="circular-actions" class="hidden">
-                    <h3 style="text-align: center; margin-bottom: 15px;">How will you keep this circular?</h3>
-                    <div class="circular-options" id="circular-options"></div>
-                </div>
-
-                <div class="action-btns">
-                    <button class="btn btn-secondary" onclick="skipProduct()">Skip →</button>
-                    <button class="btn btn-primary" id="submit-btn" onclick="submitChoice()" disabled>Submit Choice</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="modal hidden" id="gameover-modal">
-            <div class="modal-content">
-                <div class="modal-title">🎉 Challenge Complete!</div>
-                <div class="modal-stats">
-                    <div class="modal-stat-row">
-                        <span>Final Score:</span>
-                        <strong id="final-score">0</strong>
-                    </div>
-                    <div class="modal-stat-row">
-                        <span>Circularity Rate:</span>
-                        <strong id="final-circular">0%</strong>
-                    </div>
-                    <div class="modal-stat-row">
-                        <span>Waste Diverted:</span>
-                        <strong id="final-waste">0 kg</strong>
-                    </div>
-                    <div class="modal-stat-row">
-                        <span>Products Recycled:</span>
-                        <strong id="final-recycled">0/10</strong>
-                    </div>
-                </div>
-                <p id="final-message" style="font-size: 18px; margin: 20px 0;"></p>
-                <button class="btn btn-primary" onclick="location.reload()">Play Again</button>
-            </div>
-        </div>
-
-        <div class="education-section">
-            <h3>📚 Understanding the Circular Economy</h3>
-            
-            <h4 style="color: #87CEEB;">♻️ What is a Circular Economy?</h4>
-            <p>
-                A <strong>circular economy</strong> is a system where products, materials, and resources are kept in use for as long as possible. 
-                Instead of the traditional <strong>linear "take-make-waste"</strong> model, circular design eliminates waste by keeping materials 
-                cycling through the economy. Think of nature - there's no "waste," everything is food for something else!
-            </p>
-            
-            <h4 style="color: #FFD700;">📉 The Problem with Linear Economy</h4>
-            <p>
-                Our current system is mostly <strong>linear</strong>: extract raw materials → manufacture products → use briefly → throw away. 
-                This creates massive waste - globally we produce <strong>2 billion tons of solid waste per year</strong>. Only 9% of materials 
-                are recycled back into the economy. The rest goes to landfills or incinerators, wasting resources and energy while polluting 
-                the environment.
-            </p>
-            
-            <h4 style="color: #32CD32;">♻️ Circular Economy Strategies</h4>
-            <p>
-                <strong>Refuse & Reduce:</strong> Don't create waste in the first place. Design products to use less material.<br>
-                <strong>Reuse & Repair:</strong> Keep products in use longer through maintenance and repair programs.<br>
-                <strong>Refurbish & Remanufacture:</strong> Restore products to like-new condition for resale.<br>
-                <strong>Recycle:</strong> Break down materials to create new products (should be last resort, not first).<br>
-                <strong>Compost:</strong> Return biological materials safely to nature.
-            </p>
-            
-            <h4 style="color: #9370DB;">🌍 Climate Impact</h4>
-            <p>
-                Transitioning to a circular economy could reduce global greenhouse gas emissions by <strong>39% by 2032</strong>. Manufacturing 
-                alone accounts for 21% of global emissions - most of that is wasted when we throw things away! Circular design also reduces 
-                resource extraction (mining, logging, drilling) which destroys ecosystems. Companies like Patagonia (repairs clothes), 
-                Fairphone (modular phones), and Interface (carpet recycling) prove circular business models work and are profitable.
-            </p>
-            
-            <div style="background: rgba(74, 222, 128, 0.2); padding: 20px; border-radius: 10px; border-left: 4px solid #4ade80; margin-top: 20px;">
-                <strong style="color: #4ade80; font-size: 16px;">🎯 You Can Help:</strong>
-                <p style="margin: 10px 0 0 0; line-height: 1.7;">
-                    Support companies with <strong>repair programs</strong>, buy <strong>refurbished electronics</strong>, choose products made 
-                    from <strong>recycled materials</strong>, and compost food waste. Before buying something new, ask: Can I borrow it? Buy it 
-                    used? Repair what I have? Vote with your wallet for circular businesses!
-                </p>
             </div>
         </div>
     </div>
 
+    <div class="gameover-modal hidden" id="gameover-modal">
+        <div class="modal-content">
+            <div class="modal-title">🎉 Game Complete!</div>
+            <div class="final-stats">
+                <div class="final-stat">
+                    <div class="final-stat-value" id="final-score">0</div>
+                    <div class="final-stat-label">Final Score</div>
+                </div>
+                <div class="final-stat">
+                    <div class="final-stat-value" id="final-circularity">0%</div>
+                    <div class="final-stat-label">Circularity Rate</div>
+                </div>
+                <div class="final-stat">
+                    <div class="final-stat-value" id="final-waste">0</div>
+                    <div class="final-stat-label">kg Waste Avoided</div>
+                </div>
+            </div>
+            <div class="final-message" id="final-message"></div>
+            <button class="restart-btn" onclick="location.reload()">Play Again</button>
+        </div>
+    </div>
+
     <script>
+        const products = [
+            { name: 'Smartphone', icon: '📱', material: 'Electronics', weight: 0.2 },
+            { name: 'Plastic Bottle', icon: '🍼', material: 'Plastic', weight: 0.05 },
+            { name: 'T-Shirt', icon: '👕', material: 'Textile', weight: 0.15 },
+            { name: 'Laptop', icon: '💻', material: 'Electronics', weight: 2.5 },
+            { name: 'Food Scraps', icon: '🥕', material: 'Organic', weight: 0.3 },
+            { name: 'Glass Bottle', icon: '🍾', material: 'Glass', weight: 0.4 },
+            { name: 'Cardboard Box', icon: '📦', material: 'Paper', weight: 0.2 },
+            { name: 'Sneakers', icon: '👟', material: 'Mixed Materials', weight: 0.8 },
+            { name: 'Aluminum Can', icon: '🥫', material: 'Metal', weight: 0.015 },
+            { name: 'Furniture', icon: '🪑', material: 'Wood', weight: 15 }
+        ];
+
+        const circularActions = [
+            { id: 'repair', name: '🔧 Repair', desc: 'Fix and extend life', points: 30 },
+            { id: 'reuse', name: '🔄 Reuse', desc: 'Use again for same purpose', points: 25 },
+            { id: 'refurbish', name: '✨ Refurbish', desc: 'Restore to like-new', points: 28 },
+            { id: 'donate', name: '🎁 Donate', desc: 'Give to someone else', points: 22 },
+            { id: 'recycle', name: '♻️ Recycle', desc: 'Break down materials', points: 15 },
+            { id: 'upcycle', name: '🎨 Upcycle', desc: 'Transform to higher value', points: 25 },
+            { id: 'compost', name: '🌱 Compost', desc: 'Return organic matter', points: 20 }
+        ];
+
         let gameState = {
-            round: 1,
             score: 0,
-            totalWaste: 0,
-            wasteAverted: 0,
+            round: 1,
             circularChoices: 0,
+            totalWeight: 0,
+            wasteWeight: 0,
             currentProduct: null,
-            droppedPathway: null,
             selectedActions: []
         };
 
-        const PRODUCTS = [
-            { id: 1, name: 'Smartphone', icon: '📱', material: 'Electronics, Rare Metals', waste: 15, circularPotential: ['repair', 'refurbish', 'recycle'], bestChoice: 'circular' },
-            { id: 2, name: 'Plastic Bottle', icon: '🍾', material: 'PET Plastic', waste: 0.5, circularPotential: ['reuse', 'recycle'], bestChoice: 'circular' },
-            { id: 3, name: 'T-Shirt', icon: '👕', material: 'Cotton', waste: 2, circularPotential: ['repair', 'donate', 'upcycle', 'compost'], bestChoice: 'circular' },
-            { id: 4, name: 'Laptop', icon: '💻', material: 'Electronics, Metals', waste: 20, circularPotential: ['repair', 'refurbish', 'recycle'], bestChoice: 'circular' },
-            { id: 5, name: 'Food Scraps', icon: '🥕', material: 'Organic Matter', waste: 1, circularPotential: ['compost'], bestChoice: 'circular' },
-            { id: 6, name: 'Glass Jar', icon: '🫙', material: 'Glass', waste: 3, circularPotential: ['reuse', 'recycle'], bestChoice: 'circular' },
-            { id: 7, name: 'Cardboard Box', icon: '📦', material: 'Paper/Cardboard', waste: 1.5, circularPotential: ['reuse', 'recycle', 'compost'], bestChoice: 'circular' },
-            { id: 8, name: 'Sneakers', icon: '👟', material: 'Mixed Materials', waste: 4, circularPotential: ['repair', 'donate', 'recycle'], bestChoice: 'circular' },
-            { id: 9, name: 'Aluminum Can', icon: '🥫', material: 'Aluminum', waste: 0.3, circularPotential: ['recycle'], bestChoice: 'circular' },
-            { id: 10, name: 'Furniture', icon: '🪑', material: 'Wood, Metal', waste: 25, circularPotential: ['repair', 'refurbish', 'donate', 'upcycle'], bestChoice: 'circular' }
-        ];
-
-        const CIRCULAR_ACTIONS = {
-            repair: { name: 'Repair', icon: '🔧', points: 30, desc: 'Fix and extend product life' },
-            reuse: { name: 'Reuse', icon: '🔄', points: 25, desc: 'Use again for same purpose' },
-            refurbish: { name: 'Refurbish', icon: '✨', points: 28, desc: 'Restore to like-new condition' },
-            donate: { name: 'Donate', icon: '🎁', points: 22, desc: 'Give to someone who needs it' },
-            recycle: { name: 'Recycle', icon: '♻️', points: 15, desc: 'Break down into raw materials' },
-            upcycle: { name: 'Upcycle', icon: '🎨', points: 25, desc: 'Transform into higher-value product' },
-            compost: { name: 'Compost', icon: '🌱', points: 20, desc: 'Return organic matter to soil' }
-        };
+        let draggedProduct = null;
 
         function init() {
-            loadProduct();
+            loadNextProduct();
             setupDragAndDrop();
-            updateUI();
         }
 
-        function toggleInstructions() {
-            const panel = document.getElementById('instructions-panel');
-            panel.classList.toggle('hidden');
-        }
-
-        function loadProduct() {
+        function loadNextProduct() {
             if (gameState.round > 10) {
                 endGame();
                 return;
             }
 
-            gameState.currentProduct = PRODUCTS[gameState.round - 1];
-            gameState.droppedPathway = null;
+            const product = products[gameState.round - 1];
+            gameState.currentProduct = product;
             gameState.selectedActions = [];
 
-            const container = document.getElementById('current-product');
-            container.innerHTML = `
-                <div class="product-item" draggable="true" id="draggable-product">
-                    <div class="product-icon">${gameState.currentProduct.icon}</div>
-                    <div class="product-name">${gameState.currentProduct.name}</div>
-                    <div class="product-material">${gameState.currentProduct.material}</div>
-                </div>
+            const productCard = createProductCard(product);
+            document.getElementById('current-product').innerHTML = '';
+            document.getElementById('current-product').appendChild(productCard);
+
+            clearPathways();
+            hideFeedback();
+        }
+
+        function createProductCard(product) {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.draggable = true;
+            card.innerHTML = `
+                <div class="product-icon">${product.icon}</div>
+                <div class="product-name">${product.name}</div>
+                <div class="product-material">${product.material}</div>
             `;
 
-            document.getElementById('linear-content').innerHTML = '';
-            document.getElementById('circular-content').innerHTML = '';
-            document.getElementById('circular-actions').classList.add('hidden');
-            document.getElementById('feedback-banner').classList.remove('show');
-            document.getElementById('submit-btn').disabled = true;
+            card.addEventListener('dragstart', (e) => {
+                card.classList.add('dragging');
+                draggedProduct = product;
+            });
 
-            setupDragAndDrop();
+            card.addEventListener('dragend', (e) => {
+                card.classList.remove('dragging');
+            });
+
+            return card;
         }
 
         function setupDragAndDrop() {
-            const product = document.getElementById('draggable-product');
-            const linearZone = document.getElementById('linear-pathway');
-            const circularZone = document.getElementById('circular-pathway');
+            const linearPathway = document.getElementById('linear-pathway');
+            const circularPathway = document.getElementById('circular-pathway');
 
-            if (!product) return;
-
-            product.addEventListener('dragstart', (e) => {
-                e.dataTransfer.effectAllowed = 'move';
-                product.classList.add('dragging');
-            });
-
-            product.addEventListener('dragend', () => {
-                product.classList.remove('dragging');
-            });
-
-            [linearZone, circularZone].forEach(zone => {
-                zone.addEventListener('dragover', (e) => {
+            [linearPathway, circularPathway].forEach(pathway => {
+                pathway.addEventListener('dragover', (e) => {
                     e.preventDefault();
-                    zone.classList.add('drag-over');
+                    pathway.classList.add('drag-over');
                 });
 
-                zone.addEventListener('dragleave', () => {
-                    zone.classList.remove('drag-over');
+                pathway.addEventListener('dragleave', () => {
+                    pathway.classList.remove('drag-over');
                 });
 
-                zone.addEventListener('drop', (e) => {
+                pathway.addEventListener('drop', (e) => {
                     e.preventDefault();
-                    zone.classList.remove('drag-over');
-                    const pathway = zone.id === 'linear-pathway' ? 'linear' : 'circular';
-                    dropProduct(pathway);
+                    pathway.classList.remove('drag-over');
+                    
+                    if (draggedProduct) {
+                        handleDrop(pathway.id, draggedProduct);
+                    }
                 });
             });
         }
 
-        function dropProduct(pathway) {
-            gameState.droppedPathway = pathway;
-            const product = gameState.currentProduct;
-            
-            const contentId = pathway === 'linear' ? 'linear-content' : 'circular-content';
-            const content = document.getElementById(contentId);
-            
+        function handleDrop(pathwayId, product) {
+            if (pathwayId === 'linear-pathway') {
+                handleLinearChoice(product);
+            } else {
+                handleCircularChoice(product);
+            }
+        }
+
+        function handleLinearChoice(product) {
+            const content = document.getElementById('linear-content');
             content.innerHTML = `
-                <div class="dropped-product" style="border-color: ${pathway === 'linear' ? '#ef4444' : '#4ade80'};">
-                    <div style="font-size: 48px;">${product.icon}</div>
-                    <div style="flex: 1;">
-                        <div style="font-weight: bold; margin-bottom: 5px;">${product.name}</div>
-                        <div style="font-size: 12px; opacity: 0.8;">${product.material}</div>
-                    </div>
+                <div class="product-card">
+                    <div class="product-icon">${product.icon}</div>
+                    <div class="product-name">${product.name}</div>
+                    <div style="margin-top: 15px; color: #ef4444; font-weight: bold;">❌ Goes to Landfill</div>
                 </div>
             `;
 
-            document.getElementById('current-product').innerHTML = '<p style="text-align: center; opacity: 0.6;">Product placed!</p>';
+            gameState.wasteWeight += product.weight;
+            gameState.totalWeight += product.weight;
+            gameState.score -= 10;
 
-            if (pathway === 'circular') {
-                showCircularActions();
-            } else {
-                document.getElementById('submit-btn').disabled = false;
-            }
+            showFeedback(
+                '❌ Linear Path',
+                `${product.name} goes to landfill. You added ${product.weight}kg of waste.`,
+                '#ef4444'
+            );
+
+            updateStats();
+            setTimeout(() => nextRound(), 3000);
         }
 
-        function showCircularActions() {
-            const actionsDiv = document.getElementById('circular-actions');
-            actionsDiv.classList.remove('hidden');
+        function handleCircularChoice(product) {
+            const content = document.getElementById('circular-content');
+            content.innerHTML = `
+                <div class="product-card">
+                    <div class="product-icon">${product.icon}</div>
+                    <div class="product-name">${product.name}</div>
+                </div>
+                <div class="circular-actions">
+                    <div class="actions-title">🎯 Choose Circular Actions</div>
+                    <div class="action-buttons" id="action-buttons"></div>
+                    <button class="submit-btn" id="submit-btn" disabled>Submit Choice</button>
+                </div>
+            `;
 
-            const optionsContainer = document.getElementById('circular-options');
-            optionsContainer.innerHTML = '';
+            setupActionButtons();
+        }
 
-            gameState.currentProduct.circularPotential.forEach(actionKey => {
-                const action = CIRCULAR_ACTIONS[actionKey];
+        function setupActionButtons() {
+            const container = document.getElementById('action-buttons');
+            const submitBtn = document.getElementById('submit-btn');
+
+            circularActions.forEach(action => {
                 const btn = document.createElement('button');
-                btn.className = 'circular-btn';
+                btn.className = 'action-btn';
                 btn.innerHTML = `
-                    <span class="circular-btn-icon">${action.icon}</span>
-                    <div>${action.name}</div>
+                    ${action.name}
+                    <div class="action-points">+${action.points} pts</div>
                 `;
-                btn.onclick = () => toggleAction(actionKey, btn);
-                optionsContainer.appendChild(btn);
+
+                btn.addEventListener('click', () => {
+                    btn.classList.toggle('selected');
+                    
+                    if (btn.classList.contains('selected')) {
+                        gameState.selectedActions.push(action);
+                    } else {
+                        gameState.selectedActions = gameState.selectedActions.filter(a => a.id !== action.id);
+                    }
+
+                    submitBtn.disabled = gameState.selectedActions.length === 0;
+                });
+
+                container.appendChild(btn);
+            });
+
+            submitBtn.addEventListener('click', () => {
+                processCircularChoice();
             });
         }
 
-        function toggleAction(actionKey, btnElement) {
-            const idx = gameState.selectedActions.indexOf(actionKey);
-            if (idx > -1) {
-                gameState.selectedActions.splice(idx, 1);
-                btnElement.classList.remove('selected');
-            } else {
-                gameState.selectedActions.push(actionKey);
-                btnElement.classList.add('selected');
-            }
-
-            document.getElementById('submit-btn').disabled = gameState.selectedActions.length === 0;
-        }
-
-        function submitChoice() {
+        function processCircularChoice() {
             const product = gameState.currentProduct;
-            const pathway = gameState.droppedPathway;
+            const points = gameState.selectedActions.reduce((sum, action) => sum + action.points, 0);
             
-            let points = 0;
-            let feedback = '';
-            let isCorrect = false;
-
-            if (pathway === 'linear') {
-                points = -10;
-                gameState.totalWaste += product.waste;
-                feedback = `❌ Linear Path: ${product.name} goes to landfill. ${product.waste} kg waste generated.`;
-                isCorrect = false;
-            } else {
-                isCorrect = true;
-                gameState.circularChoices++;
-                gameState.wasteAverted += product.waste;
-                
-                gameState.selectedActions.forEach(actionKey => {
-                    points += CIRCULAR_ACTIONS[actionKey].points;
-                });
-
-                const actionNames = gameState.selectedActions.map(a => CIRCULAR_ACTIONS[a].name).join(', ');
-                feedback = `✅ Circular! ${actionNames} keeps ${product.name} in use. ${product.waste} kg waste avoided! +${points} points`;
-            }
-
             gameState.score += points;
+            gameState.circularChoices++;
+            gameState.totalWeight += product.weight;
 
-            showFeedback(feedback, isCorrect);
-
-            setTimeout(() => {
-                gameState.round++;
-                loadProduct();
-                updateUI();
-            }, 3000);
-        }
-
-        function skipProduct() {
-            gameState.round++;
-            loadProduct();
-            updateUI();
-        }
-
-        function showFeedback(message, correct) {
-            const banner = document.getElementById('feedback-banner');
-            banner.className = 'feedback-banner show ' + (correct ? 'correct' : 'incorrect');
+            const actionNames = gameState.selectedActions.map(a => a.name).join(', ');
             
-            document.getElementById('feedback-title').textContent = correct ? '🎉 Great Choice!' : '⚠️ Not Optimal';
-            document.getElementById('feedback-desc').textContent = message;
+            showFeedback(
+                '✅ Circular Path!',
+                `${product.name} kept in use! ${actionNames}. +${points} points`,
+                '#22c55e'
+            );
+
+            updateStats();
+            setTimeout(() => nextRound(), 3000);
         }
 
-        function updateUI() {
-            document.getElementById('score-value').textContent = gameState.score;
-            document.getElementById('round-num').textContent = gameState.round;
-            document.getElementById('waste-value').textContent = gameState.totalWaste.toFixed(1);
+        function clearPathways() {
+            document.getElementById('linear-content').innerHTML = '';
+            document.getElementById('circular-content').innerHTML = '';
+        }
 
-            const circularRate = gameState.round > 1 ? (gameState.circularChoices / (gameState.round - 1)) * 100 : 0;
-            document.getElementById('circular-value').textContent = `${circularRate.toFixed(0)}%`;
-            document.getElementById('circular-meter').style.width = `${circularRate}%`;
+        function showFeedback(title, desc, color) {
+            const banner = document.getElementById('feedback-banner');
+            banner.style.borderColor = color;
+            document.getElementById('feedback-title').textContent = title;
+            document.getElementById('feedback-desc').textContent = desc;
+            banner.classList.add('show');
+        }
+
+        function hideFeedback() {
+            document.getElementById('feedback-banner').classList.remove('show');
+        }
+
+        function updateStats() {
+            document.getElementById('score-value').textContent = gameState.score;
+            document.getElementById('round-count').textContent = gameState.round;
+            
+            const circularRate = gameState.round > 1 ? 
+                Math.round((gameState.circularChoices / (gameState.round - 1)) * 100) : 0;
+            document.getElementById('circularity-value').textContent = circularRate + '%';
+            document.getElementById('circular-meter').style.width = circularRate + '%';
+            
+            document.getElementById('waste-value').textContent = gameState.wasteWeight.toFixed(1);
+        }
+
+        function nextRound() {
+            gameState.round++;
+            loadNextProduct();
         }
 
         function endGame() {
-            const circularRate = (gameState.circularChoices / 10) * 100;
-            
+            const circularRate = Math.round((gameState.circularChoices / 10) * 100);
+            const wasteAvoided = (gameState.totalWeight - gameState.wasteWeight).toFixed(1);
+
             document.getElementById('final-score').textContent = gameState.score;
-            document.getElementById('final-circular').textContent = `${circularRate.toFixed(0)}%`;
-            document.getElementById('final-waste').textContent = `${gameState.wasteAverted.toFixed(1)} kg`;
-            document.getElementById('final-recycled').textContent = `${gameState.circularChoices}/10`;
+            document.getElementById('final-circularity').textContent = circularRate + '%';
+            document.getElementById('final-waste').textContent = wasteAvoided;
 
             let message = '';
             if (circularRate >= 90) {
-                message = '🌟 Circular Economy Master! You understand how to eliminate waste and keep resources flowing!';
+                message = '🌟 Outstanding! You\'re a circular economy champion! You understand how to eliminate waste and keep resources flowing!';
             } else if (circularRate >= 70) {
                 message = '✅ Great work! You made mostly circular choices and significantly reduced waste.';
             } else if (circularRate >= 50) {
